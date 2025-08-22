@@ -212,12 +212,17 @@ window.onload = function () {
         { id: "img3", src: "./imgs/ropa3.jpg", alt: "Imagen 3", width: "300" }
     ];
 
-    imagenes.forEach(img => {
-        const html = `<img src="${img.src}" alt="${img.alt}" width="${img.width}">`;
-        const contenedor = document.getElementById(img.id);
+    imagenes.forEach(({ id, src, alt, width }) => {
+        const contenedor = document.getElementById(id);
         if (contenedor) {
-            contenedor.innerHTML = html;
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = alt;
+            img.width = width;
+            contenedor.innerHTML = "";
+            contenedor.appendChild(img);
         }
     });
 };
+//
 </script>

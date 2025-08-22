@@ -73,19 +73,16 @@
                    <article class="categoria">
                         <h3>Ropa para Hombre</h3>
                         <div id="img1"></div>
-                        <img src="./imgs/ropa1.jpg" alt="imagen 1" width="300">
                        <a href="hombres.html">Ver más</a>
                    </article>
                    <article class="categoria">
                        <h3>Ropa para Mujeres</h3>
                        <div id="img2"></div>
-                       <img src="./imgs/ropa1.jpg" alt="imagen 1" width="300">
-                       <a href="mujeres.html">Ver más</a>
+                       <a href="mujeres.html">Ver más</a
                    </article>
                    <article class="categoria">
                        <h3>Accesorios</h3>
                        <div id="img3"></div>
-                       <img src="./imgs/ropa1.jpg" alt="imagen 1" width="300">
                        <a href="accesorios.html">Ver más</a>
                    </article>
                </div>
@@ -210,8 +207,12 @@
     window.onload = function(){
         //codigo a ejecutar cuando la pagina haya cargado
         var img1 = "<img src='./imgs/ropa1.jpg' alt='Imagen 1' width='300'>";
-        var img = document.getElementById("img1");
-        img.innerHTML = img1;
+        var img2 = "<img src='./imgs/ropa2.jpg' alt='Imagen 2' width='300'>";
+        var img3 = "<img src='./imgs/ropa3.jpg' alt='Imagen 3' width='300'>";
+
+        document.getElementById("img1").img.innerHTML = img1;
+        document.getElementById("img2").img.innerHTML = img1;
+        document.getElementById("img3").img.innerHTML = img1;
        
     };
 

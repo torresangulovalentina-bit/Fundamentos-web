@@ -95,21 +95,21 @@
        <section class="productos-destacados">
            <div class="container">
                <h2>Productos Destacados</h2>
-               <div class="grid-categorias">
-                   <article class="categoria">
+               <div class="grid-productos">
+                   <article class="producto">
                        <h3 id="h3-1"></h3>
                        <div id="imgDestacodos1"></div>
                        <p class="precio"  id="precio-1"></p>
                        <a href="producto1.html">s</a>
                        <button>Añadir al carrito</button>
                    </article>
-                   <article class="categoria">
+                   <article class="producto">
                        <h3>Leggings de Yoga</h3>
                        <p class="precio">$39.99</p>
                        <a href="producto2.html">Ver detalles</a>
                        <button>Añadir al carrito</button>
                    </article>
-                   <article class="categoria">
+                   <article class="producto">
                        <h3>Zapatillas Running</h3>
                        <p class="precio" id="precio-3"></p>
                        <a href="producto3.html">Ver detalles</a>
@@ -205,3 +205,14 @@
    </footer>
 </body>
 </html>
+
+<script>
+    window.onload = function(){
+        //codigo a ejecutar cuando la pagina haya cargado
+        var img1 = "<img src="./imgs/ropa1.jpg" alt="Imagen 1" width="300">"
+        var img = document.getElementById("img1");
+        img.innerHTML = img1;
+       
+    };
+
+</script>

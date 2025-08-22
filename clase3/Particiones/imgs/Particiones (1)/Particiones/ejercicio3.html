@@ -94,9 +94,9 @@
                <h2>Productos Destacados</h2>
                <div class="grid-productos">
                    <article class="producto">
-                       <h3 id="h3-1">Medias</h3>
+                       <h3 id="h3-1"></h3>
                        <div id="imgDestacodos1"></div>
-                       <p class="precio">24.99</p>
+                       <p class="precio"  id="precio-1"></p>
                        <a href="producto1.html">s</a>
                        <button>Añadir al carrito</button>
                    </article>
@@ -108,7 +108,7 @@
                    </article>
                    <article class="producto">
                        <h3>Zapatillas Running</h3>
-                       <p class="precio">110,900</p>
+                       <p class="precio" id="precio-3"></p>
                        <a href="producto3.html">Ver detalles</a>
                        <button>Añadir al carrito</button>
                    </article>
@@ -202,31 +202,3 @@
    </footer>
 </body>
 </html>
-
-<script>
-window.onload = function () {
-    // Datos de las imágenes
-    const imagenes = [
-        { id: "img1", src: "../imgs/ropa1.jpg", alt: "Imagen 1", width: "300 "},
-        { id: "img2", src: "../imgs/ropa2.jpg", alt: "Imagen 2", width: "300 "},
-        { id: "img3", src: "../imgs/acesorio3.jpg", alt: "Imagen 3", width: 300 },
-        { id: "img4", src: "../imgs/medias4.jpg", alt: "Imagen 4", width: 300 },
-        { id: "img5", src: "../imgs/Leggings de Yoga5.jpg", alt: "Imagen 5", width: 300 },
-        { id: "img6", src: "../imgs/Shorts Deportivos6.jpg", alt: "Imagen 6", width: 300 },
-        { id: "img7", src: "../imgs/Zapatillas Runnung7.jpg", alt: "Imagen 7", width: 300 }
-    ];
-
-    imagenes.forEach(({ id, src, alt, width }) => {
-        const contenedor = document.getElementById(id);
-        if (contenedor) {
-            const img = document.createElement("img");
-            img.src = src;
-            img.alt = alt;
-            img.width = width;
-            contenedor.innerHTML = "";
-            contenedor.appendChild(img);
-        }
-    })
-    };
-//
-</script>

@@ -69,12 +69,10 @@
        <section class="categorias-destacadas">
            <div class="container">
                <h2>Categorías Destacadas</h2>
-               <div class="grid-categorias">
-                   
-                   <article class="categoria">
-                       <h3>Ropa para Mujeres</h3>
-                       <div id="img2"></div>
-                            
+               <div class="grid-categorias" id="categorias">
+                   ${categorias.map(crearArticulo).join('')}
+               </div>
+           </div>
                        <a href="mujeres.html">Ver más</a>
                    </article>
                    <article class="categoria">

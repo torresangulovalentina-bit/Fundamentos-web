@@ -27,6 +27,5 @@ function crearArticulo(categoria) {
 				<img src="./imgs/ropa1.jpg" alt="${categoria.imgAlt}" width="300px">
 			</div>
 			<a href="${categoria.link}">${categoria.linkText}</a>
-		</article>
-	`;
+		</article>`;
 }

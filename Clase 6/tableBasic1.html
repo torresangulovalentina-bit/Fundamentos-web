@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./dashboard_base/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="./dashboard_base/assets/css/lib/datatable/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="./dashboard_base/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -122,8 +122,8 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                    <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+                    <a class="navbar-brand" href="./"><img src="./dashboard_base/images/logo.png" alt="Logo"></a>
+                    <a class="navbar-brand hidden" href="./"><img src="./dashboard_base/images/logo2.png" alt="Logo"></a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
@@ -270,68 +270,7 @@
                                             <th>Status</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="serial">1.</td>
-                                            <td class="avatar">
-                                                <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
-                                                </div>
-                                            </td>
-                                            <td> #5469 </td>
-                                            <td>  <span class="name">Louis Stanley</span> </td>
-                                            <td> <span class="product">iMax</span> </td>
-                                            <td><span class="count">231</span></td>
-                                            <td>
-                                                <span class="badge badge-complete">Complete</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="serial">2.</td>
-                                            <td class="avatar">
-                                                <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="images/avatar/2.jpg" alt=""></a>
-                                                </div>
-                                            </td>
-                                            <td> #5468 </td>
-                                            <td>  <span class="name">Gregory Dixon</span> </td>
-                                            <td> <span class="product">iPad</span> </td>
-                                            <td><span class="count">250</span></td>
-                                            <td>
-                                                <span class="badge badge-complete">Complete</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="serial">3.</td>
-                                            <td class="avatar">
-                                                <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="images/avatar/3.jpg" alt=""></a>
-                                                </div>
-                                            </td>
-                                            <td> #5467 </td>
-                                            <td>  <span class="name">Catherine Dixon</span> </td>
-                                            <td> <span class="product">SSD</span> </td>
-                                            <td><span class="count">250</span></td>
-                                            <td>
-                                                <span class="badge badge-complete">Complete</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="serial">4.</td>
-                                            <td class="avatar">
-                                                <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="images/avatar/4.jpg" alt=""></a>
-                                                </div>
-                                            </td>
-                                            <td> #5466 </td>
-                                            <td>  <span class="name">Mary Silva</span> </td>
-                                            <td> <span class="product">Magic Mouse</span> </td>
-                                            <td><span class="count">250</span></td>
-                                            <td>
-                                                <span class="badge badge-pending">Pending</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="tableBasic1"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -381,7 +320,7 @@
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
 
-
+<script "./javascript/tableBasic.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
           $('#bootstrap-data-table-export').DataTable();

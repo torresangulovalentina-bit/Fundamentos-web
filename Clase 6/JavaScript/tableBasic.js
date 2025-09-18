@@ -1,12 +1,12 @@
 const tableBodyData =[
-    {id:1, avatar:"images/avatar/1.jpg", code:"#5469", name:"Louis Stanley", product:"iMax", count:231, status:"Complete"},
+    {id:1, avatar:"images/avatar/1.jpg", code:"rgba(102, 88, 68, 0.6)", name:"Louis Stanley", product:"iMax", count:231, status:"Complete"},
     {id:2, avatar:"images/avatar/2.jpg", code:"#5468", name:"Gregory Dixon", product:"iPad", count:250, status:"Complete"},
     {id:3, avatar:"images/avatar/3.jpg", code:"#5467", name:"Catherine Dixon", product:"SSD", count:250, status:"Complete"},
     {id:4, avatar:"images/avatar/4.jpg", code:"#5466", name:"Mary Silva", product:"Magic Mouse", count:250, status:"Pending"},
 ]
 
 function loadTableData() {
-  const tableBody = document.getElementById('tableBodyData');
+  const tableBody = document.getElementById('tableBasic1');
   tableBody.innerHTML=" " ;
   tableBodyData.forEach(data => {
    const row = `<tr>

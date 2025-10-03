@@ -76,6 +76,11 @@ $('form').on('submit', function(e) {
         alert('La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial.');
         return;
     }
+
+    if(password !== confirm_password){
+        alert('Las contraseñas no coinciden.');
+        return;
+    }
 });
 </script>
 

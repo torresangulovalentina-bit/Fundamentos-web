@@ -51,6 +51,23 @@
  
  
 </body>
- 
 </html>
- 
+<script src="./jquery.js"></script>
+<script>
+    const regex = {
+nombre: /^[A-Za-zÀ-ÿ'´`¨^.\-\s]{2,60}$/,
+apellido: /^[A-Za-zÀ-ÿ'´`¨^.\-\s]{2,60}$/,
+email: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
+password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s]).{8,}$/,
+};
+
+$('form').on('submit', function(e) {
+    e.preventDefault(); // Evita el envío del formulario por defecto
+    const nombre = $('#nombre').val();
+    if(nombre && !regex.nombre.test(nombre.trim())) {
+        alert('El nombre solo debe contener letras y tener entre 2-68 caracteres.');
+        return;
+    }
+});
+</script>
+

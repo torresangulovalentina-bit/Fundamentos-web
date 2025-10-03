@@ -63,9 +63,17 @@ password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s]).{8,}$/,
 
 $('form').on('submit', function(e) {
     e.preventDefault(); // Evita el envío del formulario por defecto
+
     const nombre = $('#nombre').val();
+    const password = $('#password').val();
+
     if(nombre && !regex.nombre.test(nombre.trim())) {
         alert('El nombre solo debe contener letras y tener entre 2-68 caracteres.');
+        return;
+    }
+
+    if(password && !regex.password.test(password.trim())) {
+        alert('La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial.');
         return;
     }
 });

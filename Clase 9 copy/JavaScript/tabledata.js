@@ -1,11 +1,9 @@
 
-function loadTableData() {
-    async function obtenerDatos() {
+async function loadTableData() {
     const tableBody = document.getElementById('tableBodyData');
     tableBody.innerHTML = '';
     const tableBodyData = await obtenerDatos();
 
-    
     tableBodyData.forEach(data => {
         const url_formUsuario = 'form_usuarios.html?id=' + data.id;
         const row = document.createElement("tr");
@@ -20,8 +18,9 @@ function loadTableData() {
             </td>
         `;
         tableBody.appendChild(row);
-    })
+    });
 }
+
 async function obtenerDatos() {
   try {
     // 1. Define la URL del endpoint de la API

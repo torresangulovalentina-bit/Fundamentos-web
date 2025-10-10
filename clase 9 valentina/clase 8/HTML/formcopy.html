@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/front.css">
+    <title>formulario</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>Formulario Completo de Registro</h1>
+    <div class="form-container">
+        <form action="#" method="post">
+            <!-- Información Personal -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="pais">País:</label>
+                <select id="pais" name="pais" required>
+                    <option value="">Seleccionar país</option>
+                    <option value="argentina">Argentina</option>
+                    <option value="brasil">Brasil</option>
+                    <option value="chile">Chile</option>
+                    <option value="colombia">Colombia</option>
+                    <option value="ecuador">Ecuador</option>
+                    <option value="mexico">México</option>
+                    <option value="peru">Perú</option>
+                    <option value="venezuela">Venezuela</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="comentarios">Comentarios Adicionales:</label>
+                <textarea id="comentarios" name="comentarios"
+                    placeholder="Cualquier información adicional que quieras compartir..."></textarea>
+            </div>
+
+            <!-- Botón de envío -->
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Enviar Formulario</button>
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <script src="../JAVASCRIPT/jquery.js"></script>
+    <script>
+        const regex = {
+            nombre: /^[A-Za-zÁ-ÿ'´`¨^.\-\s]{2,60}$/,
+            apellido: /^[A-Za-zÁ-ÿ'´`¨^.\-\s]{2,60}$/,
+            telefono: /^[0-9]{7,15}$/ // solo números, entre 7 y 15 dígitos
+        };
+
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+
+            const nombre = $('#nombre').val().trim();
+            const apellido = $('#apellido').val().trim();
+            const telefono = $('#telefono').val().trim();
+            const fecha = $('#fecha_nacimiento').val().trim();
+            const pais = $('#pais').val();
+            const comentarios = $('#comentarios').val().trim();
+
+            // Validación de nombre
+            if (!regex.nombre.test(nombre)) {
+                alert('El nombre solo debe contener letras y tener entre 2 y 60 caracteres.');
+                return;
+            }
+
+            // Validación de apellido
+            if (!regex.apellido.test(apellido)) {
+                alert('El apellido solo debe contener letras y tener entre 2 y 60 caracteres.');
+                return;
+            }
+
+            // Validación de teléfono (opcional si lo llenan)
+            if (telefono && !regex.telefono.test(telefono)) {
+                alert('El teléfono debe contener solo números y entre 7 y 15 dígitos.');
+                return;
+            }
+
+            // Validación de fecha (no vacía y no futura)
+            if (!fecha) {
+                alert('Debes ingresar tu fecha de nacimiento.');
+                return;
+            }
+            const hoy = new Date();
+            const fechaNac = new Date(fecha);
+            if (fechaNac > hoy) {
+                alert('La fecha de nacimiento no puede ser en el futuro.');
+                return;
+            }
+
+            // Validación de país
+            if (!pais) {
+                alert('Selecciona un país.');
+                return;
+            }
+
+            // Comentarios (opcional, máximo 300 caracteres)
+            if (comentarios.length > 300) {
+                alert('Los comentarios no deben superar los 300 caracteres.');
+                return;
+            }
+
+            // Si pasa todas las validaciones, puedes redirigir o enviar
+            alert('Formulario válido. ¡Enviado correctamente!');
+            window.location.href = "registro_data2.html?" +
+                "nombre=" + encodeURIComponent(nombre) +
+                "&apellido=" + encodeURIComponent(apellido) +
+                "&telefono=" + encodeURIComponent(telefono) +
+                "&fecha_nacimiento=" + encodeURIComponent(fecha) +
+                "&pais=" + encodeURIComponent(pais) +
+                "&comentarios=" + encodeURIComponent(comentarios);
+
+        });
+    </script>
+
+</body>
+
+</html>

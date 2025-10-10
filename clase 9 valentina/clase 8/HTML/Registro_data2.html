@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Data Valentina</title>
+</head>
+<body>
+    <h1>Datos del Registro</h1>
+    <p><strong>Nombre: </strong><span id="nombre"></span></p>
+    <p><strong>Apellido: </strong><span id="apellido"></span></p>
+    <p><strong>Teléfono: </strong><span id="telefono"></span></p>
+    <p><strong>Fecha de Nacimiento: </strong><span id="fecha_nacimiento"></span></p>
+    <p><strong>País: </strong><span id="pais"></span></p>
+    <p><strong>Comentarios: </strong><span id="comentarios"></span></p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        document.getElementById("nombre").textContent = params.get("nombre");
+        document.getElementById("apellido").textContent = params.get("apellido") ;
+        document.getElementById("telefono").textContent = params.get("telefono") ;
+        document.getElementById("fecha_nacimiento").textContent = params.get("fecha_nacimiento") ;
+        document.getElementById("pais").textContent = params.get("pais") ;
+        document.getElementById("comentarios").textContent = params.get("comentarios") ;
+    </script>
+</body>
+</html>
+

@@ -1,27 +1,44 @@
-const tableBodyData = [
-    { name: "Lael Greer", position: "Systems Administrator", office: "London", salary: "$103,500" },
-    { name: "Jonas Alexander", position: "Developer", office: "San Francisco", salary: "$86,500" },
-    { name: "Shad Decker", position: "Regional Director", office: "Edinburgh", salary: "$183,000" },
-    { name: "Michael Bruce", position: "Javascript Developer", office: "Singapore", salary: "$183,000" },
-    { name: "Donna Snider", position: "Customer Support", office: "New York", salary: "$112,000" },
-    { name: "Jennifer Chang", position: "Regional Director", office: "Singapore", salary: "$357,650" },
-   
-];
 
 function loadTableData() {
+    async function obtenerDatos() {
     const tableBody = document.getElementById('tableBodyData');
     tableBody.innerHTML = '';
+    const tableBodyData = await obtenerDatos();
 
+    
     tableBodyData.forEach(data => {
+        const url_formUsuario = 'form_usuarios.html?id=' + data.id;
         const row = document.createElement("tr");
         row.innerHTML = `
+            <td>${data.id}</td>
             <td>${data.name}</td>
-            <td>${data.position}</td>
-            <td>${data.office}</td>
-            <td>${data.salary}</td>
+            <td>${data.email}</td>
+            <td>${data.username}</td>
+            <td>
+                <a href="${url_formUsuario}" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </td>
         `;
         tableBody.appendChild(row);
     })
+}
+async function obtenerDatos() {
+  try {
+    // 1. Define la URL del endpoint de la API
+    const url = 'https://jsonplaceholder.typicode.com/users'; // Ejemplo de URL
+
+    // 2. Realiza la petición GET usando fetch
+    const respuesta = await fetch(url);
+
+    // 3. Convierte la respuesta a formato JSON
+    const datos = await respuesta.json();
+
+    // 4. Utiliza los datos
+    console.log(datos); // Muestra los datos en la consola
+    // Aquí podrías actualizar la interfaz de usuario, por ejemplo
+  } catch (error) {
+    console.error('Error al consumir la API:', error);
+  }
 }
 
                                        

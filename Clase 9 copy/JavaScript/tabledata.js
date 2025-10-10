@@ -35,6 +35,7 @@ async function obtenerDatos() {
 
     // 4. Utiliza los datos
     console.log(datos); // Muestra los datos en la consola
+    return datos;
     // Aquí podrías actualizar la interfaz de usuario, por ejemplo
   } catch (error) {
     console.error('Error al consumir la API:', error);

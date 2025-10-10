@@ -72,15 +72,29 @@ $('form').on('submit', function(e) {
         return;
     }
 
+    if(!$('#apellido').val() || !regex.apellido.test($('#apellido').val().trim())) {
+        alert('El apellido solo debe contener letras y tener entre 2-68 caracteres.');
+        return;
+    }
+
     if(password && !regex.password.test(password.trim())) {
         alert('La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial.');
         return;
     }
 
+    const confirm_password = $('#confirm_password').val();
     if(password !== confirm_password){
         alert('Las contraseñas no coinciden.');
         return;
     }
+
+    if(!$('#email').val() || !regex.email.test($('#email').val().trim())) {
+        alert('Por favor, ingresa un correo electrónico válido.');
+        return;
+    }
+
+    const queryString = `?nombre=${encodeURIComponent(nombre)}&password=${encodeURIComponent(password)}`;
+    window.location.href = "registro_data.html" + queryString ;
 });
 </script>
 

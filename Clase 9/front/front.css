@@ -1,0 +1,81 @@
+body {
+    background: #f2f3f7;
+    color: #333;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.form-container {
+    background: #fff;
+    margin: 48px auto;
+    padding: 36px 32px;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(60, 60, 90, 0.10);
+    max-width: 520px;
+}
+.personal-header h1 {
+    color: #3a7bd5;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+.personal-header p {
+    color: #6c7a89;
+    font-size: 1.1rem;
+}
+label {
+    color: #4a4a4a;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+}
+input, select, textarea {
+    background: #f7f8fa;
+    color: #333;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: #3a7bd5;
+    outline: none;
+    box-shadow: 0 0 8px #3a7bd522;
+}
+.radio-group, .checkbox-group {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 12px;
+}
+.radio-item label, .checkbox-item label {
+    color: #333;
+    font-weight: 400;
+    margin-left: 4px;
+}
+.radio-item input, .checkbox-item input {
+    accent-color: #3a7bd5;
+}
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.submit-btn {
+    background: linear-gradient(90deg, #3a7bd5 0%, #6dd5ed 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 14px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(60, 60, 90, 0.08);
+    transition: background 0.2s;
+}
+.submit-btn:hover {
+    background: linear-gradient(90deg, #6dd5ed 0%, #3a7bd5 100%);
+}

@@ -110,5 +110,22 @@ async function getUsuario(id) {
   }
 }                              
 
+async function patchUser(original){
+    try{
+        const url = 'https://jsonplaceholder.typicode.com/users/'+original.id;
+
+        const respuesta = await fetch(url, {
+            method: "PATCH",
+            body: JSON.stringify(original)
+
+        });
+
+        const datos = await respuesta.json();
+        return datos;
+    } catch (error) {
+        console.error('Error al consumir la API:', error);
+        return null;
+    }
+}
 </script>
 </html>

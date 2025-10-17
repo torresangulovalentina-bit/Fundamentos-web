@@ -28,12 +28,12 @@
 
             <div class="form-group">
                 <label for="category">Categoría:</label>
-                <input type="text" id="category" name="category" disabled>
+                <input type="text" id="category" name="category" required>
             </div>
 
             <div class="form-group">
                 <label for="description">Descripción:</label>
-                <textarea id="description" name="description" disabled></textarea>
+                <textarea id="description" name="description" required></textarea>
             </div>
 
             <div class="form-group">
@@ -97,7 +97,7 @@
                 window.__originalProducto ||
                 JSON.parse(sessionStorage.getItem(`prd_${id}_original`) || "{}");
 
-            // Verificar si hay cambios
+            // Verificar si hubo cambios
             if (original.title === title && parseFloat(original.price) === parseFloat(price) && original.image === image) {
                // alert("No hay cambios para actualizar.");
                 return;

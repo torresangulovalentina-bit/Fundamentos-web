@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Producto</title>
+    <link rel="stylesheet" href="./css/frontProductos.css">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h1>Editar Producto</h1>
+
+        <form id="productoForm">
+            <input type="hidden" id="id">
+
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Precio:</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Categoría:</label>
+                <input type="text" id="category" name="category" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Descripción:</label>
+                <textarea id="description" name="description" disabled></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Imagen:</label>
+                <input type="url" id="image" name="image" required>
+            </div>
+
+            <div class="preview-container">
+                <img id="preview" src="" alt="Vista previa del producto">
+            </div>
+
+            <button id="enviar" type="submit" class="submit-btn">Enviar formulario</button>
+            <button id="atras" type="button" class="atras-btn">Atrás</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        window.onload = async function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get("id");
+            if (!id) return alert("No se encontró ID del producto");
+
+            const producto = await getProducto(id);
+            if (!producto) return alert("Producto no encontrado");
+
+            $("#id").val(producto.id);
+            $("#title").val(producto.title);
+            $("#price").val(producto.price);
+            $("#category").val(producto.category);
+            $("#description").val(producto.description);
+            $("#image").val(producto.image);
+            $("#preview").attr("src", producto.image);
+
+          
+            window.__originalProducto = producto;
+            sessionStorage.setItem(`prd_${producto.id}_original`, JSON.stringify(producto));
+        };
+
+ 
+        $("#image").on("input", function () {
+            $("#preview").attr("src", $(this).val());
+        });
+
+
+        $("form").on("submit", async function (e) {
+            e.preventDefault();
+
+            const title = $("#title").val().trim();
+            const price = $("#price").val().trim();
+            const image = $("#image").val().trim();
+
+            if (!title || !price || !image) {
+                alert("Por favor, rellena todos los campos obligatorios: Título, Precio e Imagen.");
+                return;
+            }
+
+            const id = $("#id").val();
+
+            const original =
+                window.__originalProducto ||
+                JSON.parse(sessionStorage.getItem(`prd_${id}_original`) || "{}");
+
+            // Verificar si hay cambios
+            if (original.title === title && parseFloat(original.price) === parseFloat(price) && original.image === image) {
+               // alert("No hay cambios para actualizar.");
+                return;
+            }
+
+            original.title = title;
+            original.price = parseFloat(price);
+            original.category = $("#category").val();
+            original.description = $("#description").val();
+            original.image = image;
+
+            sessionStorage.setItem(`prd_${id}_original`, JSON.stringify(original));
+
+            const respuesta = await fetch("https://fakestoreapi.com/products/" + id, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(original),
+            });
+
+            await respuesta.json();
+            alert("Producto actualizado correctamente.");
+            window.location.href = "tables-data.html";
+        });
+
+        async function getProducto(id) {
+            try {
+                const respuesta = await fetch("https://fakestoreapi.com/products/" + id);
+                return await respuesta.json();
+            } catch (error) {
+                console.error("Error al obtener producto:", error);
+                return null;
+            }
+        }
+
+        $("#atras").on("click", function () {
+            window.location.href = "tables-data.html";
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/from.css">
+    <title>formulario</title>
+
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Formulario Completo de Registro</h1>
+        <form action="">
+
+            <div class="form-row">
+                <input type="hidden" id="id">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Correo:</label>
+                    <input type="email" id="email" name="email" disabled>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" disabled>
+                </div>
+            </div>
+
+
+            <button type="submit" id="enviar" class="submit-btn" disabled>Enviar Formulario</button>
+    </div>
+        </form>
+
+    </div>
+</body>
+
+</html>
+
+<script src="./js/jquery.js"></script>
+<script>
+
+    window.onload = async function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const usuario = await getUsuario(urlParams.get('id'));
+        $('#username').val(usuario.username);
+        $('#nombre').val(usuario.name);
+        $('#email').val(usuario.email);
+        $('#id').val(usuario.id);
+
+        window.__originalUsuario = usuario;
+        sessionStorage.setItem(`usr_${usuario.id}_original`, JSON.stringify(usuario));
+    }
+
+    //habilitar boton enviar 
+
+    const campoNombre = document.getElementById("nombre");
+
+    campoNombre.addEventListener("change", function () {
+        document.getElementById("enviar").disabled = false;
+    });
+
+    const regex = {
+        nombre: /^[A-Za-zÀ-ÿ'´`¨^.\-\s]{2,60}$/,
+        apellido: /^[A-Za-zÀ-ÿ'´`¨^.\-\s]{2,60}$/,
+        telefono: /^\+?[0-9\s\-()]{7,20}$/,
+        comenentarios: /^[A-Za-zÀ-ÿ0-9'´`¨^.,\-\s]{0,500}$/,
+    };
+
+    $('form').on('submit', async function (e) {
+        e.preventDefault(); // Evita el envío del formulario para validación
+
+        const nombre = $('#nombre').val();
+        const id = $('#id').val();
+
+        if (nombre && !regex.nombre.test(nombre)) {
+            alert('El nombre solo debe contener letras y tener entre 2-60 caracteres.');
+            return;
+        }
+
+        const original =
+            window.__originalUsuario ||
+            JSON.parse(sessionStorage.getItem(`usr_${id}_original`) || '{}');
+        original.name = nombre;
+
+        const result = await patchUser(original)
+        alert('Actualizacion realizada');
+
+        window.location.href = 'tables-data.html';
+
+    });
+
+    async function getUsuario(id) {
+        try {
+            // 1. Define la URL del endpoint de la API
+            const url = 'https://jsonplaceholder.typicode.com/users/' + id; // Ejemplo de URL
+
+            // 2. Realiza la petición GET usando fetch
+            const respuesta = await fetch(url);
+
+            // 3. Convierte la respuesta a formato JSON
+            const datos = await respuesta.json();
+
+            // 4. Utiliza los datos
+            return datos;
+
+            // Aquí podrías actualizar la interfaz de usuario, por ejemplo
+        } catch (error) {
+            console.error('Error al consumir la API:', error);
+        }
+    }
+    //meter a javascript
+    async function patchUser(original) {
+        try {
+            const url = 'https://jsonplaceholder.typicode.com/users/' + original.id;
+
+            const respuesta = await fetch(url, { //actualiza la informacion
+                method: "PATCH",
+                body: JSON.stringify(original)
+
+            });
+
+            const datos = await respuesta.json();//obtienen los datos
+            return datos;
+        } catch (error) {
+            console.error('Error al consumir la API:', error);
+            return null;
+        }
+    }
+
+</script>

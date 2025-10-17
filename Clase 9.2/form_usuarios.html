@@ -95,7 +95,7 @@ $('form').on('submit', async function(e) {
     const result = await patchUser(original);
     console.log('patchUser', result);
     alert("Actualizacion realizada");
-    
+    window.location.href = 'tables_usuarios.html';
 });
 
 async function getUsuario(id) {

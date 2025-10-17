@@ -39,3 +39,22 @@ async function obtenerDatos() {
     console.error('Error al consumir la API:', error);
   }
 }                              
+1
+async function obtenerDatos() {
+  
+}
+async function deleteUser(id){
+    try{
+        const url = 'https://jsonplaceholder.typicode.com/users/'+id;
+
+        const respuesta = await fetch(url, {
+            method: "DELETE"
+        });
+
+        const datos = await respuesta.json();
+        alert("registro borrado");
+    } catch (error) {
+        console.error('Error al consumir la API:', error);
+        return null;
+    }
+}

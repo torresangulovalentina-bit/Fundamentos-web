@@ -76,7 +76,7 @@
     password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s]).{8,}$/,
 };
 
-$('form').on('submit', function(e) {
+$('form').on('submit', async function(e) {
     e.preventDefault();
 
     const nombre   = $('#nombre').val();
@@ -91,8 +91,8 @@ $('form').on('submit', function(e) {
             JSON.parse(sessionStorage.getItem('usr_${id}_original') || '{}');
         original.name = nombre;
 
-    const result = patchUser(original);
-    console.log(result);
+    const result = await patchUser(original);
+    console.log('patchUser', result);
     alert("Actualizacion realizada");
     
 });
